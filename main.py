@@ -1,12 +1,9 @@
 import json
 import datetime
-
 import pandas as pd
-
 from BCS import BootcampSpot
 
-# Confirmed students that are not a part of the class. IF THEY JOIN REMOVE THEIR NAME
-nan_students = ['Susanna Tabangay','Trinity Guevara','Tyler Sheard', 'William Wright']
+nan_students = pd.read_csv('data/active_students.csv')["name"].tolist()
 # Create the bcs object
 bcs = BootcampSpot()
 
@@ -59,6 +56,11 @@ def check_nearest_assignment_submission():
     print('=' * 100)
 
 
-check_attendance_today()
-check_nearest_assignment_submission()
-check_total_absences()
+def main():
+    print(nan_students)
+    check_attendance_today()
+    check_nearest_assignment_submission()
+    check_total_absences()
+
+if __name__ == "__main__":
+    main()
