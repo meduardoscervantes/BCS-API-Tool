@@ -44,9 +44,9 @@ def check_total_absences():
 
 def check_nearest_assignment_submission():
     """
-        Ping BCS API to check and see who has submitted the next assignment.
-        :return: None
-        """
+    Ping BCS API to check and see who has submitted the next assignment.
+    :return: None
+    """
     assignment = ""
     for x in bcs.get_assignments()["calendarAssignments"]:
         if x['contextId'] == 1 and datetime.date.fromisoformat(x['dueDate'][:10]) >= datetime.date.today():
