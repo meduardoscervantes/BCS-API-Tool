@@ -3,7 +3,7 @@ import datetime
 import pandas as pd
 from BCS import BootcampSpot
 
-nan_students = pd.read_csv('data/active_students.csv')["name"].tolist()
+students = pd.read_csv('data/active_students.csv')["name"].tolist()
 # Create the bcs object
 bcs = BootcampSpot()
 
@@ -26,7 +26,7 @@ def check_attendance_today():
     # Check missing students
     missing = 0
     for x in bcs.get_present_students_dict(df)["absent"]:
-        if x not in nan_students:
+        if x in students:
             print(x)
             missing += 1
     print(f'\nStudents not checked in: {missing}\n')
@@ -38,7 +38,7 @@ def check_total_absences():
     :return: None
     """
     df = bcs.get_absences_df()
-    df = df.loc[~df['name'].isin(nan_students)]
+    df = df.loc[df['name'].isin(students)]
     print(df)
     print('=' * 100)
 
@@ -57,7 +57,6 @@ def check_nearest_assignment_submission():
 
 
 def main():
-    print(nan_students)
     check_attendance_today()
     check_nearest_assignment_submission()
     check_total_absences()
