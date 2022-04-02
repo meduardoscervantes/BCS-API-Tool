@@ -30,7 +30,7 @@ def check_attendance_today():
     missing = 0
     for x in bcs.get_present_students_dict(df)["absent"]:
         if x not in nan_students:
-            print(f'\t{x} is not checked in')
+            print(x)
             missing += 1
     print(f'\nStudents not checked in: {missing}\n')
     print('=' * 100)

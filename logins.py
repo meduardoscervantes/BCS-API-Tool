@@ -11,6 +11,7 @@ def bcs_login():
     url = "https://bootcampspot.com/login"
 
     driver = webdriver.Firefox()
+    driver.maximize_window()
     driver.get(url)
 
     email = WebDriverWait(driver, timeout=5).until(EC.presence_of_element_located((By.XPATH, '//*[@id="emailAddress"]')))
@@ -21,6 +22,9 @@ def bcs_login():
     email.send_keys(config.EMAIL)
     pw.send_keys(config.BCS_PASSWORD)
     submit.click()
+
+    # Todo:
+    #   get all of current active students.
 
     join_class = WebDriverWait(driver, timeout=5).until(
         EC.presence_of_element_located(
