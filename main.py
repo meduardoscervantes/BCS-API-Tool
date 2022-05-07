@@ -15,22 +15,23 @@ def check_attendance_today():
     """
     df = bcs.get_today_attendance()
     df = df.fillna(value=False)
-
+    stu_dict = bcs.get_present_students_dict(df)
     # Check present students
-    print(f'\nStudents checked in: {len(bcs.get_present_students_dict(df)["present"])}')
+    print(f'\nStudents checked in: {len(stu_dict["present"])}')
     for x in bcs.get_present_students_dict(df)["present"]:
         print(f'\t{x} is present')
 
     print('='*50)
-
+    print(stu_dict)
     # Check missing students
     missing = 0
-    for x in bcs.get_present_students_dict(df)["absent"]:
+    for x in stu_dict["absent"]:
         if x in students:
             print(x)
             missing += 1
     print(f'\nStudents not checked in: {missing}\n')
     print('=' * 100)
+
 
 def check_total_absences():
     """
@@ -41,6 +42,7 @@ def check_total_absences():
     df = df.loc[df['name'].isin(students)]
     print(df)
     print('=' * 100)
+
 
 def check_nearest_assignment_submission():
     """
@@ -58,8 +60,9 @@ def check_nearest_assignment_submission():
 
 def main():
     check_attendance_today()
-    check_nearest_assignment_submission()
-    check_total_absences()
+    # check_nearest_assignment_submission()
+    # check_total_absences()
+
 
 if __name__ == "__main__":
     main()

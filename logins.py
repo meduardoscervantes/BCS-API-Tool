@@ -11,7 +11,7 @@ import config
 def bcs_login():
     url = "https://bootcampspot.com/"
 
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     driver.maximize_window()
 
     # Login to BCS
@@ -58,10 +58,11 @@ def bcs_login():
                                      '// *[ @ id = "main-content"] / div / section / div / div[2] / div / div / div / a')
     join_class.click()
 
+
 def gitlab_login():
     url = "https://utsa.bootcampcontent.com/users/sign_in"
 
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     driver.get(url)
 
     WebDriverWait(driver, timeout=5).until(
@@ -88,4 +89,3 @@ def initial_login():
 
 
 initial_login()
-# get_active_students()
