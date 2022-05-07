@@ -22,8 +22,8 @@ def check_attendance_today():
         print(f'\t{x} is present')
 
     print('='*50)
-    print(stu_dict)
     # Check missing students
+    print("Today's Absences:")
     missing = 0
     for x in stu_dict["absent"]:
         if x in students:
