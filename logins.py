@@ -1,4 +1,6 @@
 import os.path
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -37,6 +39,7 @@ def bcs_login():
             (By.XPATH, '/html/body/div/main/div/section')
         )
     )
+    time.sleep(1/1000)
     soup = bs(driver.page_source, 'html.parser')
     student_cards = soup.findAll('div', class_='col-xs-12 col-sm-4 col-md-3')
     os.chdir('data')
