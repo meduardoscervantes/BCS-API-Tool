@@ -1,6 +1,7 @@
 import json
 import datetime
 import pandas as pd
+import requests
 from BCS import BootcampSpot
 
 students = pd.read_csv('data/active_students.csv')["name"].tolist()
